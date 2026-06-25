@@ -1,0 +1,16 @@
+[project]
+name = "aerognc-graphnet-main-method"
+version = "0.1.0"
+description = "Minimal main-method extraction for AeroGNC-GraphNet"
+requires-python = ">=3.8"
+dependencies = [
+  "numpy",
+  "torch",
+]
+
+[project.scripts]
+aerognc-demo = "aerognc_graphnet.demo:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["aerognc_graphnet*"]
