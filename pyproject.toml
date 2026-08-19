@@ -1,16 +1,18 @@
 [project]
-name = "aerognc-graphnet-main-method"
+name = "psdg-net-open-source"
 version = "0.1.0"
-description = "Minimal main-method extraction for AeroGNC-GraphNet"
+description = "PSDG-Net executable physical-semantic graph method and two reproducible experiments"
 requires-python = ">=3.8"
 dependencies = [
   "numpy",
+  "scipy",
+  "scikit-learn",
   "torch",
 ]
 
 [project.scripts]
-aerognc-demo = "aerognc_graphnet.demo:main"
+psdg-train = "experiments.train:main"
 
 [tool.setuptools.packages.find]
 where = ["."]
-include = ["aerognc_graphnet*"]
+include = ["psdg_net*", "experiments*"]

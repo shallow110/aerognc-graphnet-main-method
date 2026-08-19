@@ -1,0 +1,5 @@
+{
+  "generator": "deterministic Darcy-Weisbach/convection/thermoelastic coupled simulator",
+  "sobol_power": 15,
+  "seed": 2028
+}

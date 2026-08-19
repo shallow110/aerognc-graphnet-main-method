@@ -1,0 +1,1046 @@
+{
+  "name": "RobotElectromechanicalActuatorDesignGraph",
+  "nodes": [
+    {
+      "name": "Context",
+      "kind": "context",
+      "discipline": "system",
+      "variables": [],
+      "ports": [],
+      "description": ""
+    },
+    {
+      "name": "Structure",
+      "kind": "component",
+      "discipline": "structural",
+      "variables": [],
+      "ports": [],
+      "description": ""
+    },
+    {
+      "name": "Dynamics",
+      "kind": "law",
+      "discipline": "mechanical",
+      "variables": [],
+      "ports": [],
+      "description": ""
+    },
+    {
+      "name": "Motor",
+      "kind": "component",
+      "discipline": "electromagnetic",
+      "variables": [],
+      "ports": [],
+      "description": ""
+    },
+    {
+      "name": "Transmission",
+      "kind": "component",
+      "discipline": "mechanical",
+      "variables": [],
+      "ports": [],
+      "description": ""
+    },
+    {
+      "name": "Thermal",
+      "kind": "law",
+      "discipline": "thermal",
+      "variables": [],
+      "ports": [],
+      "description": ""
+    },
+    {
+      "name": "Sensor",
+      "kind": "uncertainty",
+      "discipline": "instrumentation",
+      "variables": [],
+      "ports": [],
+      "description": ""
+    },
+    {
+      "name": "Controller",
+      "kind": "component",
+      "discipline": "control",
+      "variables": [],
+      "ports": [],
+      "description": ""
+    },
+    {
+      "name": "Safety",
+      "kind": "constraint",
+      "discipline": "system",
+      "variables": [],
+      "ports": [],
+      "description": ""
+    },
+    {
+      "name": "Objective",
+      "kind": "objective",
+      "discipline": "system",
+      "variables": [],
+      "ports": [],
+      "description": ""
+    }
+  ],
+  "variables": [
+    {
+      "name": "payload",
+      "node": "Context",
+      "low": 0.5,
+      "high": 8.0,
+      "unit": "kg",
+      "dimension": {
+        "mass": 1,
+        "length": 0.0,
+        "time": 0.0,
+        "current": 0.0,
+        "temperature": 0.0,
+        "amount": 0.0,
+        "luminosity": 0.0
+      },
+      "role": "condition",
+      "port": "",
+      "uncertainty_group": "independent"
+    },
+    {
+      "name": "motion_frequency",
+      "node": "Context",
+      "low": 0.15,
+      "high": 1.5,
+      "unit": "Hz",
+      "dimension": {
+        "mass": 0.0,
+        "length": 0.0,
+        "time": -1,
+        "current": 0.0,
+        "temperature": 0.0,
+        "amount": 0.0,
+        "luminosity": 0.0
+      },
+      "role": "condition",
+      "port": "",
+      "uncertainty_group": "independent"
+    },
+    {
+      "name": "ambient_temperature",
+      "node": "Context",
+      "low": 288.0,
+      "high": 318.0,
+      "unit": "K",
+      "dimension": {
+        "mass": 0.0,
+        "length": 0.0,
+        "time": 0.0,
+        "current": 0.0,
+        "temperature": 1,
+        "amount": 0.0,
+        "luminosity": 0.0
+      },
+      "role": "condition",
+      "port": "",
+      "uncertainty_group": "independent"
+    },
+    {
+      "name": "sensor_sigma",
+      "node": "Sensor",
+      "low": 0.0002,
+      "high": 0.01,
+      "unit": "rad",
+      "dimension": {
+        "mass": 0.0,
+        "length": 0.0,
+        "time": 0.0,
+        "current": 0.0,
+        "temperature": 0.0,
+        "amount": 0.0,
+        "luminosity": 0.0
+      },
+      "role": "uncertainty",
+      "port": "",
+      "uncertainty_group": "independent"
+    },
+    {
+      "name": "link1_length",
+      "node": "Structure",
+      "low": 0.25,
+      "high": 0.75,
+      "unit": "m",
+      "dimension": {
+        "mass": 0.0,
+        "length": 1,
+        "time": 0.0,
+        "current": 0.0,
+        "temperature": 0.0,
+        "amount": 0.0,
+        "luminosity": 0.0
+      },
+      "role": "design",
+      "port": "",
+      "uncertainty_group": "independent"
+    },
+    {
+      "name": "link2_length",
+      "node": "Structure",
+      "low": 0.2,
+      "high": 0.65,
+      "unit": "m",
+      "dimension": {
+        "mass": 0.0,
+        "length": 1,
+        "time": 0.0,
+        "current": 0.0,
+        "temperature": 0.0,
+        "amount": 0.0,
+        "luminosity": 0.0
+      },
+      "role": "design",
+      "port": "",
+      "uncertainty_group": "independent"
+    },
+    {
+      "name": "link1_radius",
+      "node": "Structure",
+      "low": 0.018,
+      "high": 0.065,
+      "unit": "m",
+      "dimension": {
+        "mass": 0.0,
+        "length": 1,
+        "time": 0.0,
+        "current": 0.0,
+        "temperature": 0.0,
+        "amount": 0.0,
+        "luminosity": 0.0
+      },
+      "role": "design",
+      "port": "",
+      "uncertainty_group": "independent"
+    },
+    {
+      "name": "link2_radius",
+      "node": "Structure",
+      "low": 0.015,
+      "high": 0.055,
+      "unit": "m",
+      "dimension": {
+        "mass": 0.0,
+        "length": 1,
+        "time": 0.0,
+        "current": 0.0,
+        "temperature": 0.0,
+        "amount": 0.0,
+        "luminosity": 0.0
+      },
+      "role": "design",
+      "port": "",
+      "uncertainty_group": "independent"
+    },
+    {
+      "name": "material_density",
+      "node": "Structure",
+      "low": 1200.0,
+      "high": 7800.0,
+      "unit": "kg/m3",
+      "dimension": {
+        "mass": 1,
+        "length": -3,
+        "time": 0.0,
+        "current": 0.0,
+        "temperature": 0.0,
+        "amount": 0.0,
+        "luminosity": 0.0
+      },
+      "role": "design",
+      "port": "",
+      "uncertainty_group": "independent"
+    },
+    {
+      "name": "yield_strength",
+      "node": "Structure",
+      "low": 120000000.0,
+      "high": 800000000.0,
+      "unit": "Pa",
+      "dimension": {
+        "mass": 1,
+        "length": -1,
+        "time": -2,
+        "current": 0.0,
+        "temperature": 0.0,
+        "amount": 0.0,
+        "luminosity": 0.0
+      },
+      "role": "design",
+      "port": "",
+      "uncertainty_group": "independent"
+    },
+    {
+      "name": "torque_constant",
+      "node": "Motor",
+      "low": 0.06,
+      "high": 0.35,
+      "unit": "N m/A",
+      "dimension": {
+        "mass": 1,
+        "length": 2,
+        "time": -2,
+        "current": -1,
+        "temperature": 0.0,
+        "amount": 0.0,
+        "luminosity": 0.0
+      },
+      "role": "design",
+      "port": "",
+      "uncertainty_group": "independent"
+    },
+    {
+      "name": "resistance",
+      "node": "Motor",
+      "low": 0.15,
+      "high": 1.6,
+      "unit": "ohm",
+      "dimension": {
+        "mass": 1,
+        "length": 2,
+        "time": -3,
+        "current": -2,
+        "temperature": 0.0,
+        "amount": 0.0,
+        "luminosity": 0.0
+      },
+      "role": "design",
+      "port": "",
+      "uncertainty_group": "independent"
+    },
+    {
+      "name": "current_limit",
+      "node": "Motor",
+      "low": 3.0,
+      "high": 25.0,
+      "unit": "A",
+      "dimension": {
+        "mass": 0.0,
+        "length": 0.0,
+        "time": 0.0,
+        "current": 1,
+        "temperature": 0.0,
+        "amount": 0.0,
+        "luminosity": 0.0
+      },
+      "role": "design",
+      "port": "",
+      "uncertainty_group": "independent"
+    },
+    {
+      "name": "rotor_inertia",
+      "node": "Motor",
+      "low": 2e-05,
+      "high": 0.0008,
+      "unit": "kg m2",
+      "dimension": {
+        "mass": 1,
+        "length": 2,
+        "time": 0.0,
+        "current": 0.0,
+        "temperature": 0.0,
+        "amount": 0.0,
+        "luminosity": 0.0
+      },
+      "role": "design",
+      "port": "",
+      "uncertainty_group": "independent"
+    },
+    {
+      "name": "gear_ratio",
+      "node": "Transmission",
+      "low": 18.0,
+      "high": 120.0,
+      "unit": "1",
+      "dimension": {
+        "mass": 0.0,
+        "length": 0.0,
+        "time": 0.0,
+        "current": 0.0,
+        "temperature": 0.0,
+        "amount": 0.0,
+        "luminosity": 0.0
+      },
+      "role": "design",
+      "port": "",
+      "uncertainty_group": "independent"
+    },
+    {
+      "name": "gear_efficiency",
+      "node": "Transmission",
+      "low": 0.7,
+      "high": 0.96,
+      "unit": "1",
+      "dimension": {
+        "mass": 0.0,
+        "length": 0.0,
+        "time": 0.0,
+        "current": 0.0,
+        "temperature": 0.0,
+        "amount": 0.0,
+        "luminosity": 0.0
+      },
+      "role": "design",
+      "port": "",
+      "uncertainty_group": "independent"
+    },
+    {
+      "name": "joint_friction",
+      "node": "Transmission",
+      "low": 0.02,
+      "high": 0.8,
+      "unit": "N m s",
+      "dimension": {
+        "mass": 1,
+        "length": 2,
+        "time": -1,
+        "current": 0.0,
+        "temperature": 0.0,
+        "amount": 0.0,
+        "luminosity": 0.0
+      },
+      "role": "design",
+      "port": "",
+      "uncertainty_group": "independent"
+    },
+    {
+      "name": "kp",
+      "node": "Controller",
+      "low": 15.0,
+      "high": 180.0,
+      "unit": "1",
+      "dimension": {
+        "mass": 0.0,
+        "length": 0.0,
+        "time": 0.0,
+        "current": 0.0,
+        "temperature": 0.0,
+        "amount": 0.0,
+        "luminosity": 0.0
+      },
+      "role": "design",
+      "port": "",
+      "uncertainty_group": "independent"
+    },
+    {
+      "name": "kd",
+      "node": "Controller",
+      "low": 1.0,
+      "high": 25.0,
+      "unit": "1",
+      "dimension": {
+        "mass": 0.0,
+        "length": 0.0,
+        "time": 0.0,
+        "current": 0.0,
+        "temperature": 0.0,
+        "amount": 0.0,
+        "luminosity": 0.0
+      },
+      "role": "design",
+      "port": "",
+      "uncertainty_group": "independent"
+    },
+    {
+      "name": "thermal_resistance",
+      "node": "Thermal",
+      "low": 0.4,
+      "high": 4.0,
+      "unit": "K/W",
+      "dimension": {
+        "mass": -1,
+        "length": -2,
+        "time": 3,
+        "current": 0.0,
+        "temperature": 1,
+        "amount": 0.0,
+        "luminosity": 0.0
+      },
+      "role": "design",
+      "port": "",
+      "uncertainty_group": "independent"
+    },
+    {
+      "name": "thermal_capacitance",
+      "node": "Thermal",
+      "low": 40.0,
+      "high": 400.0,
+      "unit": "J/K",
+      "dimension": {
+        "mass": 1,
+        "length": 2,
+        "time": -2,
+        "current": 0.0,
+        "temperature": -1,
+        "amount": 0.0,
+        "luminosity": 0.0
+      },
+      "role": "design",
+      "port": "",
+      "uncertainty_group": "independent"
+    },
+    {
+      "name": "stress_limit",
+      "node": "Safety",
+      "low": 80000000.0,
+      "high": 500000000.0,
+      "unit": "Pa",
+      "dimension": {
+        "mass": 1,
+        "length": -1,
+        "time": -2,
+        "current": 0.0,
+        "temperature": 0.0,
+        "amount": 0.0,
+        "luminosity": 0.0
+      },
+      "role": "constraint",
+      "port": "",
+      "uncertainty_group": "independent"
+    },
+    {
+      "name": "temperature_limit",
+      "node": "Safety",
+      "low": 335.0,
+      "high": 415.0,
+      "unit": "K",
+      "dimension": {
+        "mass": 0.0,
+        "length": 0.0,
+        "time": 0.0,
+        "current": 0.0,
+        "temperature": 1,
+        "amount": 0.0,
+        "luminosity": 0.0
+      },
+      "role": "constraint",
+      "port": "",
+      "uncertainty_group": "independent"
+    },
+    {
+      "name": "tracking_limit",
+      "node": "Safety",
+      "low": 0.003,
+      "high": 0.08,
+      "unit": "rad",
+      "dimension": {
+        "mass": 0.0,
+        "length": 0.0,
+        "time": 0.0,
+        "current": 0.0,
+        "temperature": 0.0,
+        "amount": 0.0,
+        "luminosity": 0.0
+      },
+      "role": "constraint",
+      "port": "",
+      "uncertainty_group": "independent"
+    }
+  ],
+  "ports": [
+    {
+      "name": "mechanical_demand",
+      "node": "Dynamics",
+      "domain": "mechanical",
+      "direction": "out",
+      "quantity": "torque",
+      "dimension": {
+        "mass": 1,
+        "length": 2,
+        "time": -2,
+        "current": 0.0,
+        "temperature": 0.0,
+        "amount": 0.0,
+        "luminosity": 0.0
+      }
+    },
+    {
+      "name": "transmission_load",
+      "node": "Transmission",
+      "domain": "mechanical",
+      "direction": "in",
+      "quantity": "torque",
+      "dimension": {
+        "mass": 1,
+        "length": 2,
+        "time": -2,
+        "current": 0.0,
+        "temperature": 0.0,
+        "amount": 0.0,
+        "luminosity": 0.0
+      }
+    },
+    {
+      "name": "motor_torque",
+      "node": "Motor",
+      "domain": "mechanical",
+      "direction": "out",
+      "quantity": "torque",
+      "dimension": {
+        "mass": 1,
+        "length": 2,
+        "time": -2,
+        "current": 0.0,
+        "temperature": 0.0,
+        "amount": 0.0,
+        "luminosity": 0.0
+      }
+    },
+    {
+      "name": "transmission_drive",
+      "node": "Transmission",
+      "domain": "mechanical",
+      "direction": "in",
+      "quantity": "torque",
+      "dimension": {
+        "mass": 1,
+        "length": 2,
+        "time": -2,
+        "current": 0.0,
+        "temperature": 0.0,
+        "amount": 0.0,
+        "luminosity": 0.0
+      }
+    },
+    {
+      "name": "motor_heat",
+      "node": "Motor",
+      "domain": "thermal",
+      "direction": "out",
+      "quantity": "power",
+      "dimension": {
+        "mass": 1,
+        "length": 2,
+        "time": -3,
+        "current": 0.0,
+        "temperature": 0.0,
+        "amount": 0.0,
+        "luminosity": 0.0
+      }
+    },
+    {
+      "name": "thermal_input",
+      "node": "Thermal",
+      "domain": "thermal",
+      "direction": "in",
+      "quantity": "power",
+      "dimension": {
+        "mass": 1,
+        "length": 2,
+        "time": -3,
+        "current": 0.0,
+        "temperature": 0.0,
+        "amount": 0.0,
+        "luminosity": 0.0
+      }
+    },
+    {
+      "name": "sensor_signal",
+      "node": "Sensor",
+      "domain": "signal",
+      "direction": "out",
+      "quantity": "position",
+      "dimension": {
+        "mass": 0.0,
+        "length": 0.0,
+        "time": 0.0,
+        "current": 0.0,
+        "temperature": 0.0,
+        "amount": 0.0,
+        "luminosity": 0.0
+      }
+    },
+    {
+      "name": "controller_measurement",
+      "node": "Controller",
+      "domain": "signal",
+      "direction": "in",
+      "quantity": "position",
+      "dimension": {
+        "mass": 0.0,
+        "length": 0.0,
+        "time": 0.0,
+        "current": 0.0,
+        "temperature": 0.0,
+        "amount": 0.0,
+        "luminosity": 0.0
+      }
+    }
+  ],
+  "equations": [
+    {
+      "name": "rigid_body_dynamics",
+      "node": "Dynamics",
+      "inputs": [
+        "payload",
+        "link1_length",
+        "link2_length",
+        "motion_frequency"
+      ],
+      "outputs": [
+        "required_torque"
+      ],
+      "law_type": "balance",
+      "normalized_scale": 1.0,
+      "description": ""
+    },
+    {
+      "name": "beam_stress",
+      "node": "Structure",
+      "inputs": [
+        "payload",
+        "link1_radius",
+        "link2_radius",
+        "yield_strength"
+      ],
+      "outputs": [
+        "maximum_stress"
+      ],
+      "law_type": "constitutive",
+      "normalized_scale": 1.0,
+      "description": ""
+    },
+    {
+      "name": "electromechanical_conversion",
+      "node": "Motor",
+      "inputs": [
+        "torque_constant",
+        "current_limit",
+        "gear_ratio",
+        "gear_efficiency"
+      ],
+      "outputs": [
+        "available_torque"
+      ],
+      "law_type": "energy_conversion",
+      "normalized_scale": 1.0,
+      "description": ""
+    },
+    {
+      "name": "joule_thermal_balance",
+      "node": "Thermal",
+      "inputs": [
+        "resistance",
+        "thermal_resistance",
+        "thermal_capacitance",
+        "ambient_temperature"
+      ],
+      "outputs": [
+        "winding_temperature"
+      ],
+      "law_type": "conservation",
+      "normalized_scale": 1.0,
+      "description": ""
+    },
+    {
+      "name": "closed_loop_response",
+      "node": "Controller",
+      "inputs": [
+        "kp",
+        "kd",
+        "sensor_sigma"
+      ],
+      "outputs": [
+        "settling_time",
+        "tracking_error"
+      ],
+      "law_type": "control_law",
+      "normalized_scale": 1.0,
+      "description": ""
+    },
+    {
+      "name": "system_objective",
+      "node": "Objective",
+      "inputs": [
+        "payload",
+        "motion_frequency"
+      ],
+      "outputs": [
+        "mass",
+        "energy",
+        "tracking"
+      ],
+      "law_type": "objective",
+      "normalized_scale": 1.0,
+      "description": ""
+    }
+  ],
+  "constraints": [
+    {
+      "name": "stress_margin",
+      "node": "Safety",
+      "variables": [
+        "stress_limit"
+      ],
+      "sense": "ge",
+      "description": ""
+    },
+    {
+      "name": "temperature_margin",
+      "node": "Safety",
+      "variables": [
+        "temperature_limit"
+      ],
+      "sense": "ge",
+      "description": ""
+    },
+    {
+      "name": "tracking_margin",
+      "node": "Safety",
+      "variables": [
+        "tracking_limit"
+      ],
+      "sense": "ge",
+      "description": ""
+    },
+    {
+      "name": "current_margin",
+      "node": "Safety",
+      "variables": [
+        "current_limit"
+      ],
+      "sense": "ge",
+      "description": ""
+    }
+  ],
+  "relations": [
+    {
+      "source": "Context",
+      "target": "Dynamics",
+      "relation_type": "operating_condition",
+      "transfer": "information",
+      "source_port": "",
+      "target_port": "",
+      "equation": "rigid_body_dynamics",
+      "constraint": "",
+      "prior_confidence": 0.98,
+      "causal": true,
+      "reverse_confidence": 0.0
+    },
+    {
+      "source": "Structure",
+      "target": "Dynamics",
+      "relation_type": "inertia_coupling",
+      "transfer": "energy",
+      "source_port": "",
+      "target_port": "",
+      "equation": "rigid_body_dynamics",
+      "constraint": "",
+      "prior_confidence": 0.98,
+      "causal": true,
+      "reverse_confidence": 0.0
+    },
+    {
+      "source": "Dynamics",
+      "target": "Transmission",
+      "relation_type": "torque_demand",
+      "transfer": "energy",
+      "source_port": "mechanical_demand",
+      "target_port": "transmission_load",
+      "equation": "rigid_body_dynamics",
+      "constraint": "",
+      "prior_confidence": 0.98,
+      "causal": true,
+      "reverse_confidence": 0.0
+    },
+    {
+      "source": "Motor",
+      "target": "Transmission",
+      "relation_type": "torque_supply",
+      "transfer": "energy",
+      "source_port": "motor_torque",
+      "target_port": "transmission_drive",
+      "equation": "electromechanical_conversion",
+      "constraint": "",
+      "prior_confidence": 0.98,
+      "causal": true,
+      "reverse_confidence": 0.0
+    },
+    {
+      "source": "Transmission",
+      "target": "Dynamics",
+      "relation_type": "actuation_feedback",
+      "transfer": "energy",
+      "source_port": "",
+      "target_port": "",
+      "equation": "electromechanical_conversion",
+      "constraint": "",
+      "prior_confidence": 0.92,
+      "causal": true,
+      "reverse_confidence": 0.0
+    },
+    {
+      "source": "Motor",
+      "target": "Thermal",
+      "relation_type": "loss_heat",
+      "transfer": "energy",
+      "source_port": "motor_heat",
+      "target_port": "thermal_input",
+      "equation": "joule_thermal_balance",
+      "constraint": "",
+      "prior_confidence": 0.98,
+      "causal": true,
+      "reverse_confidence": 0.0
+    },
+    {
+      "source": "Context",
+      "target": "Thermal",
+      "relation_type": "ambient_condition",
+      "transfer": "information",
+      "source_port": "",
+      "target_port": "",
+      "equation": "joule_thermal_balance",
+      "constraint": "",
+      "prior_confidence": 0.9,
+      "causal": true,
+      "reverse_confidence": 0.0
+    },
+    {
+      "source": "Sensor",
+      "target": "Controller",
+      "relation_type": "measurement",
+      "transfer": "information",
+      "source_port": "sensor_signal",
+      "target_port": "controller_measurement",
+      "equation": "closed_loop_response",
+      "constraint": "",
+      "prior_confidence": 0.98,
+      "causal": true,
+      "reverse_confidence": 0.0
+    },
+    {
+      "source": "Controller",
+      "target": "Motor",
+      "relation_type": "current_command",
+      "transfer": "information",
+      "source_port": "",
+      "target_port": "",
+      "equation": "electromechanical_conversion",
+      "constraint": "",
+      "prior_confidence": 0.95,
+      "causal": true,
+      "reverse_confidence": 0.0
+    },
+    {
+      "source": "Dynamics",
+      "target": "Controller",
+      "relation_type": "plant_response",
+      "transfer": "information",
+      "source_port": "",
+      "target_port": "",
+      "equation": "closed_loop_response",
+      "constraint": "",
+      "prior_confidence": 0.95,
+      "causal": true,
+      "reverse_confidence": 0.0
+    },
+    {
+      "source": "Structure",
+      "target": "Safety",
+      "relation_type": "stress_to_constraint",
+      "transfer": "force",
+      "source_port": "",
+      "target_port": "",
+      "equation": "beam_stress",
+      "constraint": "stress_margin",
+      "prior_confidence": 0.98,
+      "causal": true,
+      "reverse_confidence": 0.0
+    },
+    {
+      "source": "Thermal",
+      "target": "Safety",
+      "relation_type": "temperature_to_constraint",
+      "transfer": "energy",
+      "source_port": "",
+      "target_port": "",
+      "equation": "joule_thermal_balance",
+      "constraint": "temperature_margin",
+      "prior_confidence": 0.98,
+      "causal": true,
+      "reverse_confidence": 0.0
+    },
+    {
+      "source": "Controller",
+      "target": "Safety",
+      "relation_type": "tracking_to_constraint",
+      "transfer": "information",
+      "source_port": "",
+      "target_port": "",
+      "equation": "closed_loop_response",
+      "constraint": "tracking_margin",
+      "prior_confidence": 0.95,
+      "causal": true,
+      "reverse_confidence": 0.0
+    },
+    {
+      "source": "Motor",
+      "target": "Safety",
+      "relation_type": "current_to_constraint",
+      "transfer": "energy",
+      "source_port": "",
+      "target_port": "",
+      "equation": "electromechanical_conversion",
+      "constraint": "current_margin",
+      "prior_confidence": 0.95,
+      "causal": true,
+      "reverse_confidence": 0.0
+    },
+    {
+      "source": "Structure",
+      "target": "Objective",
+      "relation_type": "mass_to_objective",
+      "transfer": "information",
+      "source_port": "",
+      "target_port": "",
+      "equation": "system_objective",
+      "constraint": "",
+      "prior_confidence": 0.95,
+      "causal": true,
+      "reverse_confidence": 0.0
+    },
+    {
+      "source": "Thermal",
+      "target": "Objective",
+      "relation_type": "loss_to_objective",
+      "transfer": "energy",
+      "source_port": "",
+      "target_port": "",
+      "equation": "system_objective",
+      "constraint": "",
+      "prior_confidence": 0.9,
+      "causal": true,
+      "reverse_confidence": 0.0
+    },
+    {
+      "source": "Controller",
+      "target": "Objective",
+      "relation_type": "performance_to_objective",
+      "transfer": "information",
+      "source_port": "",
+      "target_port": "",
+      "equation": "system_objective",
+      "constraint": "",
+      "prior_confidence": 0.95,
+      "causal": true,
+      "reverse_confidence": 0.0
+    },
+    {
+      "source": "Safety",
+      "target": "Objective",
+      "relation_type": "constraint_to_objective",
+      "transfer": "information",
+      "source_port": "",
+      "target_port": "",
+      "equation": "system_objective",
+      "constraint": "",
+      "prior_confidence": 0.98,
+      "causal": true,
+      "reverse_confidence": 0.0
+    }
+  ],
+  "metadata": {}
+}

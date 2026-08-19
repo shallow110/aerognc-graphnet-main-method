@@ -1,0 +1,5 @@
+{
+  "generator": "deterministic coupled rigid-body/electromagnetic/thermal/structural simulator",
+  "sobol_power": 15,
+  "seed": 2027
+}

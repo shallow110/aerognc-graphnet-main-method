@@ -1,0 +1,984 @@
+{
+  "name": "ThermalFluidMechanicalExecutableDesignGraph",
+  "nodes": [
+    {
+      "name": "Context",
+      "kind": "context",
+      "discipline": "system",
+      "variables": [],
+      "ports": [],
+      "description": ""
+    },
+    {
+      "name": "Geometry",
+      "kind": "component",
+      "discipline": "mechanical",
+      "variables": [],
+      "ports": [],
+      "description": ""
+    },
+    {
+      "name": "Fluid",
+      "kind": "state",
+      "discipline": "fluid",
+      "variables": [],
+      "ports": [],
+      "description": ""
+    },
+    {
+      "name": "Hydraulics",
+      "kind": "law",
+      "discipline": "fluid",
+      "variables": [],
+      "ports": [],
+      "description": ""
+    },
+    {
+      "name": "Pump",
+      "kind": "component",
+      "discipline": "fluid",
+      "variables": [],
+      "ports": [],
+      "description": ""
+    },
+    {
+      "name": "Thermal",
+      "kind": "law",
+      "discipline": "thermal",
+      "variables": [],
+      "ports": [],
+      "description": ""
+    },
+    {
+      "name": "Material",
+      "kind": "component",
+      "discipline": "materials",
+      "variables": [],
+      "ports": [],
+      "description": ""
+    },
+    {
+      "name": "Structure",
+      "kind": "law",
+      "discipline": "structural",
+      "variables": [],
+      "ports": [],
+      "description": ""
+    },
+    {
+      "name": "Safety",
+      "kind": "constraint",
+      "discipline": "system",
+      "variables": [],
+      "ports": [],
+      "description": ""
+    },
+    {
+      "name": "Objective",
+      "kind": "objective",
+      "discipline": "system",
+      "variables": [],
+      "ports": [],
+      "description": ""
+    }
+  ],
+  "variables": [
+    {
+      "name": "heat_load",
+      "node": "Context",
+      "low": 500.0,
+      "high": 12000.0,
+      "unit": "W",
+      "dimension": {
+        "mass": 1,
+        "length": 2,
+        "time": -3,
+        "current": 0.0,
+        "temperature": 0.0,
+        "amount": 0.0,
+        "luminosity": 0.0
+      },
+      "role": "condition",
+      "port": "",
+      "uncertainty_group": "independent"
+    },
+    {
+      "name": "ambient_temperature",
+      "node": "Context",
+      "low": 283.0,
+      "high": 318.0,
+      "unit": "K",
+      "dimension": {
+        "mass": 0.0,
+        "length": 0.0,
+        "time": 0.0,
+        "current": 0.0,
+        "temperature": 1,
+        "amount": 0.0,
+        "luminosity": 0.0
+      },
+      "role": "condition",
+      "port": "",
+      "uncertainty_group": "independent"
+    },
+    {
+      "name": "channel_length",
+      "node": "Geometry",
+      "low": 0.25,
+      "high": 2.0,
+      "unit": "m",
+      "dimension": {
+        "mass": 0.0,
+        "length": 1,
+        "time": 0.0,
+        "current": 0.0,
+        "temperature": 0.0,
+        "amount": 0.0,
+        "luminosity": 0.0
+      },
+      "role": "design",
+      "port": "",
+      "uncertainty_group": "independent"
+    },
+    {
+      "name": "hydraulic_diameter",
+      "node": "Geometry",
+      "low": 0.003,
+      "high": 0.03,
+      "unit": "m",
+      "dimension": {
+        "mass": 0.0,
+        "length": 1,
+        "time": 0.0,
+        "current": 0.0,
+        "temperature": 0.0,
+        "amount": 0.0,
+        "luminosity": 0.0
+      },
+      "role": "design",
+      "port": "",
+      "uncertainty_group": "independent"
+    },
+    {
+      "name": "flow_area",
+      "node": "Geometry",
+      "low": 2e-05,
+      "high": 0.0015,
+      "unit": "m2",
+      "dimension": {
+        "mass": 0.0,
+        "length": 2,
+        "time": 0.0,
+        "current": 0.0,
+        "temperature": 0.0,
+        "amount": 0.0,
+        "luminosity": 0.0
+      },
+      "role": "design",
+      "port": "",
+      "uncertainty_group": "independent"
+    },
+    {
+      "name": "wall_thickness",
+      "node": "Geometry",
+      "low": 0.0008,
+      "high": 0.009,
+      "unit": "m",
+      "dimension": {
+        "mass": 0.0,
+        "length": 1,
+        "time": 0.0,
+        "current": 0.0,
+        "temperature": 0.0,
+        "amount": 0.0,
+        "luminosity": 0.0
+      },
+      "role": "design",
+      "port": "",
+      "uncertainty_group": "independent"
+    },
+    {
+      "name": "solid_width",
+      "node": "Geometry",
+      "low": 0.02,
+      "high": 0.2,
+      "unit": "m",
+      "dimension": {
+        "mass": 0.0,
+        "length": 1,
+        "time": 0.0,
+        "current": 0.0,
+        "temperature": 0.0,
+        "amount": 0.0,
+        "luminosity": 0.0
+      },
+      "role": "design",
+      "port": "",
+      "uncertainty_group": "independent"
+    },
+    {
+      "name": "roughness",
+      "node": "Geometry",
+      "low": 1e-06,
+      "high": 0.00015,
+      "unit": "m",
+      "dimension": {
+        "mass": 0.0,
+        "length": 1,
+        "time": 0.0,
+        "current": 0.0,
+        "temperature": 0.0,
+        "amount": 0.0,
+        "luminosity": 0.0
+      },
+      "role": "design",
+      "port": "",
+      "uncertainty_group": "independent"
+    },
+    {
+      "name": "mass_flow",
+      "node": "Fluid",
+      "low": 0.015,
+      "high": 0.65,
+      "unit": "kg/s",
+      "dimension": {
+        "mass": 1,
+        "length": 0.0,
+        "time": -1,
+        "current": 0.0,
+        "temperature": 0.0,
+        "amount": 0.0,
+        "luminosity": 0.0
+      },
+      "role": "design",
+      "port": "",
+      "uncertainty_group": "independent"
+    },
+    {
+      "name": "fluid_density",
+      "node": "Fluid",
+      "low": 750.0,
+      "high": 1100.0,
+      "unit": "kg/m3",
+      "dimension": {
+        "mass": 1,
+        "length": -3,
+        "time": 0.0,
+        "current": 0.0,
+        "temperature": 0.0,
+        "amount": 0.0,
+        "luminosity": 0.0
+      },
+      "role": "design",
+      "port": "",
+      "uncertainty_group": "independent"
+    },
+    {
+      "name": "fluid_viscosity",
+      "node": "Fluid",
+      "low": 0.00035,
+      "high": 0.004,
+      "unit": "Pa s",
+      "dimension": {
+        "mass": 1,
+        "length": -1,
+        "time": -1,
+        "current": 0.0,
+        "temperature": 0.0,
+        "amount": 0.0,
+        "luminosity": 0.0
+      },
+      "role": "design",
+      "port": "",
+      "uncertainty_group": "independent"
+    },
+    {
+      "name": "fluid_cp",
+      "node": "Fluid",
+      "low": 1800.0,
+      "high": 4300.0,
+      "unit": "J/kg/K",
+      "dimension": {
+        "mass": 0.0,
+        "length": 2,
+        "time": -2,
+        "current": 0.0,
+        "temperature": -1,
+        "amount": 0.0,
+        "luminosity": 0.0
+      },
+      "role": "design",
+      "port": "",
+      "uncertainty_group": "independent"
+    },
+    {
+      "name": "fluid_conductivity",
+      "node": "Fluid",
+      "low": 0.12,
+      "high": 0.7,
+      "unit": "W/m/K",
+      "dimension": {
+        "mass": 1,
+        "length": 1,
+        "time": -3,
+        "current": 0.0,
+        "temperature": -1,
+        "amount": 0.0,
+        "luminosity": 0.0
+      },
+      "role": "design",
+      "port": "",
+      "uncertainty_group": "independent"
+    },
+    {
+      "name": "pump_efficiency",
+      "node": "Pump",
+      "low": 0.45,
+      "high": 0.88,
+      "unit": "1",
+      "dimension": {
+        "mass": 0.0,
+        "length": 0.0,
+        "time": 0.0,
+        "current": 0.0,
+        "temperature": 0.0,
+        "amount": 0.0,
+        "luminosity": 0.0
+      },
+      "role": "design",
+      "port": "",
+      "uncertainty_group": "independent"
+    },
+    {
+      "name": "wall_conductivity",
+      "node": "Material",
+      "low": 12.0,
+      "high": 230.0,
+      "unit": "W/m/K",
+      "dimension": {
+        "mass": 1,
+        "length": 1,
+        "time": -3,
+        "current": 0.0,
+        "temperature": -1,
+        "amount": 0.0,
+        "luminosity": 0.0
+      },
+      "role": "design",
+      "port": "",
+      "uncertainty_group": "independent"
+    },
+    {
+      "name": "elastic_modulus",
+      "node": "Material",
+      "low": 3000000000.0,
+      "high": 210000000000.0,
+      "unit": "Pa",
+      "dimension": {
+        "mass": 1,
+        "length": -1,
+        "time": -2,
+        "current": 0.0,
+        "temperature": 0.0,
+        "amount": 0.0,
+        "luminosity": 0.0
+      },
+      "role": "design",
+      "port": "",
+      "uncertainty_group": "independent"
+    },
+    {
+      "name": "thermal_expansion",
+      "node": "Material",
+      "low": 4e-06,
+      "high": 2.8e-05,
+      "unit": "1/K",
+      "dimension": {
+        "mass": 0.0,
+        "length": 0.0,
+        "time": 0.0,
+        "current": 0.0,
+        "temperature": -1,
+        "amount": 0.0,
+        "luminosity": 0.0
+      },
+      "role": "design",
+      "port": "",
+      "uncertainty_group": "independent"
+    },
+    {
+      "name": "yield_strength",
+      "node": "Material",
+      "low": 70000000.0,
+      "high": 800000000.0,
+      "unit": "Pa",
+      "dimension": {
+        "mass": 1,
+        "length": -1,
+        "time": -2,
+        "current": 0.0,
+        "temperature": 0.0,
+        "amount": 0.0,
+        "luminosity": 0.0
+      },
+      "role": "design",
+      "port": "",
+      "uncertainty_group": "independent"
+    },
+    {
+      "name": "material_density",
+      "node": "Material",
+      "low": 1200.0,
+      "high": 8900.0,
+      "unit": "kg/m3",
+      "dimension": {
+        "mass": 1,
+        "length": -3,
+        "time": 0.0,
+        "current": 0.0,
+        "temperature": 0.0,
+        "amount": 0.0,
+        "luminosity": 0.0
+      },
+      "role": "design",
+      "port": "",
+      "uncertainty_group": "independent"
+    },
+    {
+      "name": "pressure_limit",
+      "node": "Safety",
+      "low": 30000.0,
+      "high": 1200000.0,
+      "unit": "Pa",
+      "dimension": {
+        "mass": 1,
+        "length": -1,
+        "time": -2,
+        "current": 0.0,
+        "temperature": 0.0,
+        "amount": 0.0,
+        "luminosity": 0.0
+      },
+      "role": "constraint",
+      "port": "",
+      "uncertainty_group": "independent"
+    },
+    {
+      "name": "temperature_limit",
+      "node": "Safety",
+      "low": 320.0,
+      "high": 500.0,
+      "unit": "K",
+      "dimension": {
+        "mass": 0.0,
+        "length": 0.0,
+        "time": 0.0,
+        "current": 0.0,
+        "temperature": 1,
+        "amount": 0.0,
+        "luminosity": 0.0
+      },
+      "role": "constraint",
+      "port": "",
+      "uncertainty_group": "independent"
+    },
+    {
+      "name": "stress_limit",
+      "node": "Safety",
+      "low": 50000000.0,
+      "high": 600000000.0,
+      "unit": "Pa",
+      "dimension": {
+        "mass": 1,
+        "length": -1,
+        "time": -2,
+        "current": 0.0,
+        "temperature": 0.0,
+        "amount": 0.0,
+        "luminosity": 0.0
+      },
+      "role": "constraint",
+      "port": "",
+      "uncertainty_group": "independent"
+    },
+    {
+      "name": "deformation_limit",
+      "node": "Safety",
+      "low": 2e-05,
+      "high": 0.004,
+      "unit": "m",
+      "dimension": {
+        "mass": 0.0,
+        "length": 1,
+        "time": 0.0,
+        "current": 0.0,
+        "temperature": 0.0,
+        "amount": 0.0,
+        "luminosity": 0.0
+      },
+      "role": "constraint",
+      "port": "",
+      "uncertainty_group": "independent"
+    }
+  ],
+  "ports": [
+    {
+      "name": "fluid_out",
+      "node": "Hydraulics",
+      "domain": "fluid",
+      "direction": "out",
+      "quantity": "pressure_flow",
+      "dimension": {
+        "mass": 0.0,
+        "length": 0.0,
+        "time": 0.0,
+        "current": 0.0,
+        "temperature": 0.0,
+        "amount": 0.0,
+        "luminosity": 0.0
+      }
+    },
+    {
+      "name": "pump_in",
+      "node": "Pump",
+      "domain": "fluid",
+      "direction": "in",
+      "quantity": "pressure_flow",
+      "dimension": {
+        "mass": 0.0,
+        "length": 0.0,
+        "time": 0.0,
+        "current": 0.0,
+        "temperature": 0.0,
+        "amount": 0.0,
+        "luminosity": 0.0
+      }
+    },
+    {
+      "name": "heat_source",
+      "node": "Context",
+      "domain": "thermal",
+      "direction": "out",
+      "quantity": "heat",
+      "dimension": {
+        "mass": 1,
+        "length": 2,
+        "time": -3,
+        "current": 0.0,
+        "temperature": 0.0,
+        "amount": 0.0,
+        "luminosity": 0.0
+      }
+    },
+    {
+      "name": "thermal_in",
+      "node": "Thermal",
+      "domain": "thermal",
+      "direction": "in",
+      "quantity": "heat",
+      "dimension": {
+        "mass": 1,
+        "length": 2,
+        "time": -3,
+        "current": 0.0,
+        "temperature": 0.0,
+        "amount": 0.0,
+        "luminosity": 0.0
+      }
+    },
+    {
+      "name": "temperature_out",
+      "node": "Thermal",
+      "domain": "thermal",
+      "direction": "out",
+      "quantity": "temperature",
+      "dimension": {
+        "mass": 0.0,
+        "length": 0.0,
+        "time": 0.0,
+        "current": 0.0,
+        "temperature": 1,
+        "amount": 0.0,
+        "luminosity": 0.0
+      }
+    },
+    {
+      "name": "structure_temperature",
+      "node": "Structure",
+      "domain": "thermal",
+      "direction": "in",
+      "quantity": "temperature",
+      "dimension": {
+        "mass": 0.0,
+        "length": 0.0,
+        "time": 0.0,
+        "current": 0.0,
+        "temperature": 1,
+        "amount": 0.0,
+        "luminosity": 0.0
+      }
+    }
+  ],
+  "equations": [
+    {
+      "name": "darcy_weisbach",
+      "node": "Hydraulics",
+      "inputs": [
+        "channel_length",
+        "hydraulic_diameter",
+        "flow_area",
+        "roughness",
+        "mass_flow",
+        "fluid_density",
+        "fluid_viscosity"
+      ],
+      "outputs": [
+        "pressure_drop"
+      ],
+      "law_type": "conservation",
+      "normalized_scale": 1.0,
+      "description": ""
+    },
+    {
+      "name": "pump_power",
+      "node": "Pump",
+      "inputs": [
+        "mass_flow",
+        "fluid_density",
+        "pump_efficiency"
+      ],
+      "outputs": [
+        "pump_power"
+      ],
+      "law_type": "energy_conversion",
+      "normalized_scale": 1.0,
+      "description": ""
+    },
+    {
+      "name": "convective_heat_transfer",
+      "node": "Thermal",
+      "inputs": [
+        "heat_load",
+        "mass_flow",
+        "fluid_cp",
+        "fluid_conductivity",
+        "hydraulic_diameter"
+      ],
+      "outputs": [
+        "outlet_temperature",
+        "wall_temperature"
+      ],
+      "law_type": "conservation",
+      "normalized_scale": 1.0,
+      "description": ""
+    },
+    {
+      "name": "thermoelastic_stress",
+      "node": "Structure",
+      "inputs": [
+        "elastic_modulus",
+        "thermal_expansion",
+        "wall_thickness"
+      ],
+      "outputs": [
+        "combined_stress",
+        "deformation"
+      ],
+      "law_type": "constitutive",
+      "normalized_scale": 1.0,
+      "description": ""
+    },
+    {
+      "name": "system_objective",
+      "node": "Objective",
+      "inputs": [
+        "heat_load",
+        "pump_efficiency",
+        "material_density"
+      ],
+      "outputs": [
+        "energy",
+        "mass",
+        "performance"
+      ],
+      "law_type": "objective",
+      "normalized_scale": 1.0,
+      "description": ""
+    }
+  ],
+  "constraints": [
+    {
+      "name": "pressure_margin",
+      "node": "Safety",
+      "variables": [
+        "pressure_limit"
+      ],
+      "sense": "ge",
+      "description": ""
+    },
+    {
+      "name": "temperature_margin",
+      "node": "Safety",
+      "variables": [
+        "temperature_limit"
+      ],
+      "sense": "ge",
+      "description": ""
+    },
+    {
+      "name": "stress_margin",
+      "node": "Safety",
+      "variables": [
+        "stress_limit"
+      ],
+      "sense": "ge",
+      "description": ""
+    },
+    {
+      "name": "deformation_margin",
+      "node": "Safety",
+      "variables": [
+        "deformation_limit"
+      ],
+      "sense": "ge",
+      "description": ""
+    }
+  ],
+  "relations": [
+    {
+      "source": "Geometry",
+      "target": "Hydraulics",
+      "relation_type": "flow_geometry",
+      "transfer": "material",
+      "source_port": "",
+      "target_port": "",
+      "equation": "darcy_weisbach",
+      "constraint": "",
+      "prior_confidence": 0.98,
+      "causal": true,
+      "reverse_confidence": 0.0
+    },
+    {
+      "source": "Fluid",
+      "target": "Hydraulics",
+      "relation_type": "fluid_state",
+      "transfer": "material",
+      "source_port": "",
+      "target_port": "",
+      "equation": "darcy_weisbach",
+      "constraint": "",
+      "prior_confidence": 0.98,
+      "causal": true,
+      "reverse_confidence": 0.0
+    },
+    {
+      "source": "Hydraulics",
+      "target": "Pump",
+      "relation_type": "pressure_flow",
+      "transfer": "energy",
+      "source_port": "fluid_out",
+      "target_port": "pump_in",
+      "equation": "pump_power",
+      "constraint": "",
+      "prior_confidence": 0.98,
+      "causal": true,
+      "reverse_confidence": 0.0
+    },
+    {
+      "source": "Context",
+      "target": "Thermal",
+      "relation_type": "heat_input",
+      "transfer": "energy",
+      "source_port": "heat_source",
+      "target_port": "thermal_in",
+      "equation": "convective_heat_transfer",
+      "constraint": "",
+      "prior_confidence": 0.98,
+      "causal": true,
+      "reverse_confidence": 0.0
+    },
+    {
+      "source": "Fluid",
+      "target": "Thermal",
+      "relation_type": "convective_transport",
+      "transfer": "energy",
+      "source_port": "",
+      "target_port": "",
+      "equation": "convective_heat_transfer",
+      "constraint": "",
+      "prior_confidence": 0.98,
+      "causal": true,
+      "reverse_confidence": 0.0
+    },
+    {
+      "source": "Geometry",
+      "target": "Thermal",
+      "relation_type": "heat_transfer_area",
+      "transfer": "energy",
+      "source_port": "",
+      "target_port": "",
+      "equation": "convective_heat_transfer",
+      "constraint": "",
+      "prior_confidence": 0.94,
+      "causal": true,
+      "reverse_confidence": 0.0
+    },
+    {
+      "source": "Material",
+      "target": "Thermal",
+      "relation_type": "conduction",
+      "transfer": "energy",
+      "source_port": "",
+      "target_port": "",
+      "equation": "convective_heat_transfer",
+      "constraint": "",
+      "prior_confidence": 0.95,
+      "causal": true,
+      "reverse_confidence": 0.0
+    },
+    {
+      "source": "Thermal",
+      "target": "Structure",
+      "relation_type": "thermal_load",
+      "transfer": "energy",
+      "source_port": "temperature_out",
+      "target_port": "structure_temperature",
+      "equation": "thermoelastic_stress",
+      "constraint": "",
+      "prior_confidence": 0.98,
+      "causal": true,
+      "reverse_confidence": 0.0
+    },
+    {
+      "source": "Geometry",
+      "target": "Structure",
+      "relation_type": "structural_geometry",
+      "transfer": "force",
+      "source_port": "",
+      "target_port": "",
+      "equation": "thermoelastic_stress",
+      "constraint": "",
+      "prior_confidence": 0.98,
+      "causal": true,
+      "reverse_confidence": 0.0
+    },
+    {
+      "source": "Material",
+      "target": "Structure",
+      "relation_type": "constitutive",
+      "transfer": "force",
+      "source_port": "",
+      "target_port": "",
+      "equation": "thermoelastic_stress",
+      "constraint": "",
+      "prior_confidence": 0.98,
+      "causal": true,
+      "reverse_confidence": 0.0
+    },
+    {
+      "source": "Hydraulics",
+      "target": "Structure",
+      "relation_type": "pressure_load",
+      "transfer": "force",
+      "source_port": "",
+      "target_port": "",
+      "equation": "thermoelastic_stress",
+      "constraint": "",
+      "prior_confidence": 0.92,
+      "causal": true,
+      "reverse_confidence": 0.0
+    },
+    {
+      "source": "Hydraulics",
+      "target": "Safety",
+      "relation_type": "pressure_to_constraint",
+      "transfer": "force",
+      "source_port": "",
+      "target_port": "",
+      "equation": "",
+      "constraint": "pressure_margin",
+      "prior_confidence": 0.98,
+      "causal": true,
+      "reverse_confidence": 0.0
+    },
+    {
+      "source": "Thermal",
+      "target": "Safety",
+      "relation_type": "temperature_to_constraint",
+      "transfer": "energy",
+      "source_port": "",
+      "target_port": "",
+      "equation": "",
+      "constraint": "temperature_margin",
+      "prior_confidence": 0.98,
+      "causal": true,
+      "reverse_confidence": 0.0
+    },
+    {
+      "source": "Structure",
+      "target": "Safety",
+      "relation_type": "stress_to_constraint",
+      "transfer": "force",
+      "source_port": "",
+      "target_port": "",
+      "equation": "",
+      "constraint": "stress_margin",
+      "prior_confidence": 0.98,
+      "causal": true,
+      "reverse_confidence": 0.0
+    },
+    {
+      "source": "Pump",
+      "target": "Objective",
+      "relation_type": "power_to_objective",
+      "transfer": "energy",
+      "source_port": "",
+      "target_port": "",
+      "equation": "system_objective",
+      "constraint": "",
+      "prior_confidence": 0.95,
+      "causal": true,
+      "reverse_confidence": 0.0
+    },
+    {
+      "source": "Thermal",
+      "target": "Objective",
+      "relation_type": "temperature_to_objective",
+      "transfer": "information",
+      "source_port": "",
+      "target_port": "",
+      "equation": "system_objective",
+      "constraint": "",
+      "prior_confidence": 0.9,
+      "causal": true,
+      "reverse_confidence": 0.0
+    },
+    {
+      "source": "Structure",
+      "target": "Objective",
+      "relation_type": "mass_stress_to_objective",
+      "transfer": "information",
+      "source_port": "",
+      "target_port": "",
+      "equation": "system_objective",
+      "constraint": "",
+      "prior_confidence": 0.92,
+      "causal": true,
+      "reverse_confidence": 0.0
+    },
+    {
+      "source": "Safety",
+      "target": "Objective",
+      "relation_type": "constraint_to_objective",
+      "transfer": "information",
+      "source_port": "",
+      "target_port": "",
+      "equation": "system_objective",
+      "constraint": "",
+      "prior_confidence": 0.98,
+      "causal": true,
+      "reverse_confidence": 0.0
+    }
+  ],
+  "metadata": {}
+}
